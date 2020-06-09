@@ -1,5 +1,6 @@
 from django.shortcuts import render,get_object_or_404
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
+from django.urls import reverse_lazy
 from django.views import generic
 from . models import Album,Song
 
@@ -18,6 +19,13 @@ class CreateAlbum(CreateView):
     model = Album
     fields = ['artist','album_title','genre','album_logo']
 
+class UpdateAlbum(UpdateView):
+    model = Album
+    fields = ['artist','album_title','genre','album_logo']
+
+class DeleteAlbum(DeleteView):
+    model = Album
+    success_url = reverse_lazy('music:index')
 
 def favorite(request,album_id):
     album=get_object_or_404(Album,pk=album_id)
