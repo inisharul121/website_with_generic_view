@@ -13,6 +13,7 @@ urlpatterns = [
     path('album/<int:pk>/',views.UpdateView.as_view(), name='album-update' ),
     #/music/album/2/delete
     path('album/<int:pk>/delete/',views.DetailView.as_view(), name='album-delete' ),
+    path('register/',views.UserFormView.as_view(), name='register'),
     #/music/<album_id>/favorite
     path('<int:album_id>/favorite/',views.favorite, name='favorite' ),
 
